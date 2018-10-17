@@ -754,33 +754,12 @@ this.grids = {
 
 	// Positions the grid on the right or on the left, accordingly to where the scrollbar should go in different locale layouts
 	direction: function(doc) {
-		// http://kb.mozillazine.org/Layout.scrollbar.side
-		switch(Prefs['scrollbar.side']) {
-			// Here's to hoping this one is actually correct as I have no way to test, I need to wait for some user input on this
-			case 0:
-				// http://mxr.mozilla.org/l10n-mozilla-release/search?find=%2F&string=direction%3A+rtl
-				var rtlList = [ 'ar', 'fa', 'he' ];
-				var appLocale = Services.locale.getApplicationLocale().getCategory("NSILOCALE_MESSAGES");
-				for(let locale of rtlList) {
-					if(appLocale.startsWith(locale)) {
-						return 'ltr';
-					}
-				}
-				return 'rtl';
-
-			case 1:
 				if(doc.documentElement.dir == 'rtl') {
 					return 'ltr';
 				}
 				return 'rtl';
-
-			case 3:
-				return 'ltr';
-
-			case 2:
-			default:
-				return 'rtl';
-		}
+			
+			
 	},
 
 	resizeSpacers: function(grid) {
